@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "小萤去水印",
+  "usingComponents": {
+    "bottom-menu": "/components/bottomMenu/bottomMenu"
+  }
+}

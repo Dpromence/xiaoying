@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/save",
+    "pages/index/tips",
+    "pages/index/set",
+    "pages/index/saveImg"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "小萤去水印",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#ffffff"
+  },
+  "permission": {
+    "scope.writePhotosAlbum": {
+      "desc": "您的相册将用于保存图片视频"
+    }
+  },
+  "usingComponents": {}
+}

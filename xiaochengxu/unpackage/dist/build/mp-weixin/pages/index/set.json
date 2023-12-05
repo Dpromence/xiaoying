@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "头像装饰",
+  "usingComponents": {
+    "nav-bar": "/components/navBar/navBar",
+    "bottom-menu": "/components/bottomMenu/bottomMenu"
+  }
+}

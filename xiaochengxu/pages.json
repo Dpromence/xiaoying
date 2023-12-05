@@ -1,0 +1,65 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "小萤去水印"
+			}
+		},
+		{
+			"path": "pages/index/save",
+			"style": {
+				"navigationBarTitleText": "解析结果"
+			}
+		},
+		{
+			"path": "pages/index/tips",
+			"style": {
+				"navigationBarTitleText": "使用教程"
+			}
+		},
+		{
+			"path": "pages/index/set",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "头像装饰"
+			}
+		},
+		{
+			"path": "pages/index/saveImg",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "头像保存"
+			}
+		}
+	],
+	// "tabBar": {
+	// 	"color": "#999999",
+	// 	"selectedColor": "#0080DF",
+	// 	"borderStyle": "white",
+	// 	"backgroundColor": "#ffffff",
+	// 	"list": [{
+	// 			"pagePath": "pages/index/index",
+	// 			"iconPath": "/static/tabBar/index.png",
+	// 			"selectedIconPath": "/static/tabBar/index1.png",
+	// 			"text": "首页"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/index/set",
+	// 			"iconPath": "/static/tabBar/deal.png",
+	// 			"selectedIconPath": "/static/tabBar/deal1.png",
+	// 			"text": "头像装饰"
+	// 		}
+	// 	]
+	// },
+	"globalStyle": {
+		// #ifdef H5
+			"navigationStyle":"custom",
+		//#endif
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "小萤去水印",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff"
+	},
+	"uniIdRouter": {}
+}
