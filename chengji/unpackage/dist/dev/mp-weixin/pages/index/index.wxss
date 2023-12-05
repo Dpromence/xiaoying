@@ -1,0 +1,24 @@
+
+.content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	background: #fff;
+	padding-top: 20rpx;
+}
+textarea {
+	font-size: 28rpx !important;
+}
+.text-area {
+	height: 80rpx;
+	width: 160rpx;
+	background: #42b983;
+	text-align: center;
+	line-height: 80rpx;
+	margin-bottom: 20rpx;
+	margin-right: 10rpx;
+	margin-left: 10rpx;
+	color: #fff;
+}
+
