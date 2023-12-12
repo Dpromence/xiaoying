@@ -1,4 +1,10 @@
-const { urlencoded } = require('express');
+const {
+	urlencoded
+} = require('express');
+
+const {
+	Op
+} = require('sequelize');
 var express = require('express');
 var router = express.Router();
 var modules = require("../models");
@@ -51,30 +57,51 @@ router.get('/addUser', async function(req, res, next) {
 			}
 		}
 	})
-	// let a = await modules.User.findAll({
-	// 	where: {
-
-	// 	}
-	// })
-	//    res.json({
-	// 	data: a
-	// })
 });
 
 
-router.post('/getResoult', async function(req, res){
+router.post('/getResoult', async function(req, res) {
 	let url = encodeURI(req.body.url)
+	const reg = /(https?|http|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/g;
+	const strValue = url.match(reg);
+	let result = ''
+	if (strValue && strValue.length > 0) {
+		result = strValue[0];
+	}
 	var request = require('request');
-	request('https://gongju.yyymvp.com/query?url='+url, async function(error, response, body) {
+	request('https://uu.yyymvp.com/query?url=' + result, async function(error, response, body) {
 		if (!error && response.statusCode == 200) {
+			console.log(JSON.parse(body).code)
+			if (JSON.parse(body).code != 100) {
+				await modules.Search.create({
+					userId: req.body.userId,
+					seachValue: req.body.url,
+					title: '查询失败',
+					imgs: '',
+					status: 0
+				})
+			} else {
+				try {
+					await modules.Search.create1({
+						userId: req.body.userId,
+						seachValue: req.body.url,
+						title: JSON.parse(body).data.title,
+						imgs: JSON.stringify(JSON.parse(body).data.pics),
+						status: 1
+					})
+				} catch (error) {}
+				for (let i in JSON.parse(body).data.pics) {
+					try {
+						await modules.Imgs.create1({
+							openId: req.body.openId,
+							img: JSON.parse(body).data.pics[i]
+						})
+					} catch (error) {
+
+					}
+				}
+			}
 			res.json(JSON.parse(body))
-			await modules.Search.create({
-				userId: req.body.userId,
-				seachValue: req.body.url,
-				title: JSON.parse(body).data.title,
-				imgs: JSON.stringify(JSON.parse(body).data.pics),
-				status: 1
-			})
 		} else {
 			await modules.Search.create({
 				userId: req.body.userId,
@@ -87,5 +114,58 @@ router.post('/getResoult', async function(req, res){
 		}
 	})
 })
+
+
+router.get('/getCount', async function(req, res) {
+	// 导入模型文件（根据自己项目中的情况修改）
+	try {
+		const count = await modules.Search.count({
+			where: {
+				createdAt: {
+					[Op.gte]: new Date().setHours(0, 0, 0, 0),
+					[Op.lt]: new Date().setHours(23, 59, 59, 999)
+				},
+			},
+		});
+		res.json({
+			status: "SUCCESS",
+			code: '200',
+			data: {
+				count: count
+			}
+		})
+		console.log(`今天共有 ${count} 条数据。`);
+	} catch (error) {
+		console.error("发生错误：", error);
+	}
+})
+
+
+router.get('/getImgs', async function(req, res) {
+	// 导入模型文件（根据自己项目中的情况修改）
+	try {
+		let page  = req.query.page
+		let pageSize = req.query.pageSize - 0
+		let offset = (page - 1) * pageSize
+		const result = await modules.Search.findAndCountAll({
+			where: {
+				status: 1
+			},
+			limit: pageSize,
+			offset: offset
+		});
+		res.json({
+			status: "SUCCESS",
+			code: '200',
+			data: result.rows,
+			count: result.count
+		})
+	} catch (error) {
+		console.error("发生错误：", error);
+	}
+})
+
+
+
 
 module.exports = router;

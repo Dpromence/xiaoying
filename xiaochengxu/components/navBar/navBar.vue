@@ -108,9 +108,10 @@
 			}
 
 			.title {
-				font-size: 28rpx;
+				font-size: 34rpx;
 				line-height: 34rpx;
 				text-align: center;
+				font-weight: bold;
 				width: calc(100% );
 				color: $uni-text-color;
 			}

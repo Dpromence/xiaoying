@@ -24,13 +24,16 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.menuList.data-v-3c5a7584 {
+.img-list.data-v-3c5a7584 {
   position: fixed;
   bottom: 0;
   width: 100%;
+  background: #fff;
+  z-index: 99;
+}
+.menuList.data-v-3c5a7584 {
   display: flex;
   height: 60px;
-  z-index: 100;
   align-items: center;
   background: #fff;
   border-top: 1rpx solid #f6f6f6;

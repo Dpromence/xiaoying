@@ -24,43 +24,35 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.navBar {
-  position: fixed;
+.content .listBox.data-v-7855924c {
+  display: flex;
+  width: calc(100% - 20rpx);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 20rpx 0 0;
+}
+.content .listBox .list.data-v-7855924c {
+  width: 48%;
+  margin-left: 15rpx;
+  margin-bottom: 30rpx;
+}
+.content .listBox .list .img.data-v-7855924c {
+  height: 450rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+.content .listBox .list .img image.data-v-7855924c {
   width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 98;
 }
-.navBar .box {
-  width: calc(100% - 40rpx);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.navBar .box .back {
-  width: 80rpx;
-  height: 88rpx;
-  display: flex;
-  align-items: center;
-}
-.navBar .box .back .backIcon {
-  width: 22rpx;
-  height: 36rpx;
-}
-.navBar .box .back .white {
-  width: 36rpx;
-  height: 36rpx;
-}
-.navBar .box .title {
-  font-size: 34rpx;
-  line-height: 34rpx;
-  text-align: center;
+.content .listBox .list .title.data-v-7855924c {
+  font-size: 24rpx;
+  color: #1a1a1a;
   font-weight: bold;
-  width: calc(100%);
-  color: #333;
-}
-.navBar .box .title.white {
-  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 

@@ -2,6 +2,20 @@
 	export default {
 		onLaunch() {
 			console.log('App Launch')
+			uni.setStorageSync('navBarHeight', (wx.getMenuButtonBoundingClientRect().height + wx.getMenuButtonBoundingClientRect().top + 5)*2)
+			uni.setStorageSync('isFullSucreen', false)
+			uni.setStorageSync('sucreenHeight', (wx.getMenuButtonBoundingClientRect().height + wx.getMenuButtonBoundingClientRect().top + 5)*2+120)
+			uni.setStorageSync('buttomMenuHeight', 120)
+			wx.getSystemInfo({
+				success: res => {
+					// 根据 屏幕高度 进行判断
+					if (res.screenHeight - res.safeArea.height > 40) {
+						uni.setStorageSync('isFullSucreen', true)
+						uni.setStorageSync('buttomMenuHeight', 180)
+						uni.setStorageSync('sucreenHeight', (wx.getMenuButtonBoundingClientRect().height + wx.getMenuButtonBoundingClientRect().top + 5)*2+180)
+					}
+				}
+			})
 			this.login()
 		},
 		onShow() {

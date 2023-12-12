@@ -13,7 +13,7 @@
 			<textarea v-model="value" @confirm="confirm" confirm-type="done" placeholder="请输入视频(或图集)链接"></textarea>
 		</view>
 		<view class="tips" style="color: #FF5722;" @tap="tips">
-			不知道怎么获取链接，点击这里
+			不知道怎么获取链接？点击这里，查看教程
 		</view>
 		<view class="des">
 			tips:常用平台视频/图片在线去水印解析下载。
@@ -58,7 +58,7 @@
 			}
 		},
 		onLoad() {
-
+			
 		},
 		onShareAppMessage() {
 			return {
@@ -146,6 +146,7 @@
 						openId: uni.getStorageSync('userInfo').openId,
 					}).then(res => {
 						uni.hideLoading()
+						console.log(res)
 						if (res.code == '200' || res.code == '100') {
 							if (res.code == 200) {
 								res.data.pics = res.data.images.length>0?res.data.images:res.data.cover
@@ -159,7 +160,7 @@
 							})
 						} else {
 							wx.showToast({
-								title: res.msg,
+								title: res.message,
 								icon: 'none'
 							})
 						}
@@ -215,8 +216,9 @@
 		.tips {
 			width: calc(100% - 60rpx);
 			margin: 20rpx auto 0;
-			font-size: 26rpx;
+			font-size: 28rpx;
 			color: #0080DF;
+			font-weight: bold;
 		}
 
 		.buttons {

@@ -4,7 +4,8 @@
     "pages/index/save",
     "pages/index/tips",
     "pages/index/set",
-    "pages/index/saveImg"
+    "pages/index/saveImg",
+    "pages/index/orther"
   ],
   "subPackages": [],
   "window": {

@@ -1,5 +1,5 @@
 <template>
-	<view class="img-list" v-if="status">
+	<view class="img-list">
 		<view class="menuList">
 			<view class="menu " :class="menuActive == 1?'active':''" @click="menuTap(1)">
 				<img v-if="menuActive == 1" src="@/static/tabBar/index1.png" alt="">
@@ -9,9 +9,15 @@
 			<view class="menu" :class="menuActive == 2?'active':''" @click="menuTap(2)">
 				<img v-if="menuActive == 2" src="@/static/tabBar/deal1.png" alt="">
 				<img v-else src="@/static/tabBar/deal.png" alt="">
-				<span>头像装饰</span>
+				<span>更多壁纸</span>
 			</view>
+			<!-- <view class="menu" :class="menuActive == 2?'active':''" @click="menuTap(2)">
+				<img v-if="menuActive == 2" src="@/static/tabBar/deal1.png" alt="">
+				<img v-else src="@/static/tabBar/deal.png" alt="">
+				<span>头像装饰</span>
+			</view> -->
 		</view>
+		<view class="" v-if="isFullSucreen" style="height: 60rpx;background: #fff;"></view>
 	</view>
 </template>
  
@@ -24,7 +30,8 @@
 		},
 		data() {
 			return {
-				status: ''
+				status: '',
+				isFullSucreen: uni.getStorageSync('isFullSucreen')
 			}
 		},
 		mounted() {
@@ -55,7 +62,7 @@
 				}
 				if (index == 2) {
 					uni.redirectTo({
-						url: '/pages/index/set'
+						url: '/pages/index/orther'
 					})
 				}
 			}
@@ -64,13 +71,16 @@
 </script>
 
 <style lang="scss" scoped>
-	.menuList {
+	.img-list {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
+		background: #fff;
+		z-index: 99;
+	}
+	.menuList {
 		display: flex;
 		height: 60px;
-		z-index: 100;
 		align-items: center;
 		background: #fff;
 		border-top: 1rpx solid #f6f6f6;

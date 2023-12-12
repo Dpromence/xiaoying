@@ -9477,9 +9477,9 @@ internalMixin(Vue);
 
 /***/ }),
 /* 26 */
-/*!***********************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/pages.json ***!
-  \***********************************************************/
+/*!***************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/pages.json ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9623,9 +9623,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 33 */
-/*!*************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/uni.promisify.adaptor.js ***!
-  \*************************************************************************/
+/*!*****************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/uni.promisify.adaptor.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9646,9 +9646,9 @@ uni.addInterceptor({
 
 /***/ }),
 /* 34 */
-/*!*****************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/utils/request.js ***!
-  \*****************************************************************/
+/*!*********************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/utils/request.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9672,6 +9672,7 @@ var GET = 'GET';
 var POST = 'POST';
 // const baseUrl = 'https://eeapi.cn'; // 正式
 var baseUrl = 'http://127.0.0.1:3000'; // 正式
+// const baseUrl = 'https://www.9877nba.cc'; // 正式
 // const baseUrl = 'https://gongju.yyymvp.com'; // 正式
 
 function request(method, url, data) {
@@ -9713,7 +9714,15 @@ var Api = {
   // 查询数据
   login: function login(data) {
     return request(GET, '/users/addUser', data);
-  } //登录
+  },
+  //登录
+  getCount: function getCount(data) {
+    return request(GET, '/users/getCount', data);
+  },
+  //获取今日调用量
+  getImgs: function getImgs(data) {
+    return request(GET, '/users/getImgs', data);
+  } //获取图片列表
 };
 var _default = {
   Api: Api
@@ -9751,9 +9760,9 @@ exports.default = _default;
 /* 61 */,
 /* 62 */,
 /* 63 */
-/*!***********************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/pages/index/imgs/2.png ***!
-  \***********************************************************************/
+/*!***************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/pages/index/imgs/2.png ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9776,9 +9785,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACp
 /* 77 */,
 /* 78 */,
 /* 79 */
-/*!*************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/static/tabBar/index1.png ***!
-  \*************************************************************************/
+/*!*****************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/static/tabBar/index1.png ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9786,9 +9795,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAd
 
 /***/ }),
 /* 80 */
-/*!************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/static/tabBar/index.png ***!
-  \************************************************************************/
+/*!****************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/static/tabBar/index.png ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9796,9 +9805,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoCAYAAAAd
 
 /***/ }),
 /* 81 */
-/*!************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/static/tabBar/deal1.png ***!
-  \************************************************************************/
+/*!****************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/static/tabBar/deal1.png ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9806,9 +9815,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAA7CAYAAAA9
 
 /***/ }),
 /* 82 */
-/*!***********************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/static/tabBar/deal.png ***!
-  \***********************************************************************/
+/*!***************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/static/tabBar/deal.png ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9823,9 +9832,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAA7CAYAAAA9
 /* 88 */,
 /* 89 */,
 /* 90 */
-/*!********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/components/navBar/imgs/back.png ***!
-  \********************************************************************************/
+/*!************************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/components/navBar/imgs/back.png ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9833,9 +9842,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAjCAYAAAB7
 
 /***/ }),
 /* 91 */
-/*!*************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/components/navBar/imgs/backWhite.png ***!
-  \*************************************************************************************/
+/*!*****************************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/components/navBar/imgs/backWhite.png ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9843,9 +9852,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 /* 92 */
-/*!*********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/components/navBar/imgs/index.png ***!
-  \*********************************************************************************/
+/*!*************************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/components/navBar/imgs/index.png ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9853,9 +9862,9 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 
 /***/ }),
 /* 93 */
-/*!**************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/一键去水印 (1)/components/navBar/imgs/indexWhite.png ***!
-  \**************************************************************************************/
+/*!******************************************************************************!*\
+  !*** D:/我的/myapp/xiaoying/xiaochengxu/components/navBar/imgs/indexWhite.png ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

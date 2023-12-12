@@ -2,14 +2,14 @@
 	<view class="content" v-if="isShowMenu">
 		<view class="navBar" :style="{height: navBarHeight+'px'}"></view>
 		<navBar title="头像制作" :leftIcon="false" :dark="false"></navBar>
-		<view class="choiceMenu">
+	<!-- 	<view class="choiceMenu">
 			<view class="tab" @tap="choiceMenuMath(0)" :class="choiceMenuIndex == 0?'active':''">
 				微信头像
 			</view>
 			<view class="tab" @tap="choiceMenuMath(1)" :class="choiceMenuIndex == 1?'active':''">
 				抖音头像
 			</view>
-		</view>
+		</view> -->
 		<!-- <img class="bg" :style="{height: (100)+'vh'}" src="./imgs/bg.png" alt=""> -->
 		<view class="headImg" :class="choiceMenuIndex != 0?'cicle':''">
 			<img :src="choiceImgUrl" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 2;">
