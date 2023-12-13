@@ -49,10 +49,24 @@
   line-height: 0;
   border-radius: 10rpx;
   background: #f8f8f8;
+  position: relative;
   margin-bottom: 10rpx;
 }
 .content .listBox .list .img image.data-v-7855924c {
   width: 100%;
+}
+.content .listBox .list .img .tag.data-v-7855924c {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 22rpx;
+  color: #fff;
+  line-height: 40rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  background: rgba(0, 0, 0, 0.5);
 }
 .content .listBox .list .title.data-v-7855924c {
   font-size: 24rpx;

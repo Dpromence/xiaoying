@@ -11,6 +11,7 @@
 				<view class="listBox">
 					<view class="list" v-for="(item, index) in list" :key="index" @tap="details(index)">
 						<view class="img">
+							<span class="tag">{{item.imgs.length}}</span>
 							<image :src="item.url" mode="aspectFill"></image>
 						</view>
 						<view class="title">
@@ -146,10 +147,23 @@
 					line-height: 0;
 					border-radius: 10rpx;
 					background: #f8f8f8;
+					position: relative;
 					image {
 						width: 100%;
 					}
 					margin-bottom: 10rpx;
+					.tag {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 40rpx;
+						height: 40rpx;
+						font-size: 22rpx;color: #fff;
+						line-height: 40rpx;
+						text-align: center;
+						border-radius: 30rpx;
+						background: rgba(0,0,0, .5);
+					}
 				}
 				.title {
 					font-size: 24rpx;
