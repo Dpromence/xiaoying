@@ -5,7 +5,8 @@
     "pages/index/tips",
     "pages/index/set",
     "pages/index/saveImg",
-    "pages/index/orther"
+    "pages/index/orther",
+    "pages/index/history"
   ],
   "subPackages": [],
   "window": {

@@ -101,7 +101,7 @@ var components
 try {
   components = {
     bottomMenu: function () {
-      return Promise.all(/*! import() | components/bottomMenu/bottomMenu */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/bottomMenu/bottomMenu")]).then(__webpack_require__.bind(null, /*! @/components/bottomMenu/bottomMenu.vue */ 76))
+      return Promise.all(/*! import() | components/bottomMenu/bottomMenu */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/bottomMenu/bottomMenu")]).then(__webpack_require__.bind(null, /*! @/components/bottomMenu/bottomMenu.vue */ 84))
     },
   }
 } catch (e) {
@@ -166,7 +166,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var bottomMenu = function bottomMenu() {
   Promise.all(/*! require.ensure | components/bottomMenu/bottomMenu */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/bottomMenu/bottomMenu")]).then((function () {
-    return resolve(__webpack_require__(/*! @/components/bottomMenu/bottomMenu.vue */ 76));
+    return resolve(__webpack_require__(/*! @/components/bottomMenu/bottomMenu.vue */ 84));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

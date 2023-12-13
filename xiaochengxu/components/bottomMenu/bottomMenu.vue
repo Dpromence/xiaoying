@@ -11,6 +11,11 @@
 				<img v-else src="@/static/tabBar/deal.png" alt="">
 				<span>更多壁纸</span>
 			</view>
+			<view class="menu" :class="menuActive == 3?'active':''" @click="menuTap(3)">
+				<img v-if="menuActive == 3" src="@/static/tabBar/manage1.png" alt="">
+				<img v-else src="@/static/tabBar/manage.png" alt="">
+				<span>历史记录</span>
+			</view>
 			<!-- <view class="menu" :class="menuActive == 2?'active':''" @click="menuTap(2)">
 				<img v-if="menuActive == 2" src="@/static/tabBar/deal1.png" alt="">
 				<img v-else src="@/static/tabBar/deal.png" alt="">
@@ -63,6 +68,11 @@
 				if (index == 2) {
 					uni.redirectTo({
 						url: '/pages/index/orther'
+					})
+				}
+				if (index == 3) {
+					uni.redirectTo({
+						url: '/pages/index/history'
 					})
 				}
 			}

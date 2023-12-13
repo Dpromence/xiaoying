@@ -82,7 +82,7 @@ router.post('/getResoult', async function(req, res) {
 				})
 			} else {
 				try {
-					await modules.Search.create1({
+					await modules.Search.create({
 						userId: req.body.userId,
 						seachValue: req.body.url,
 						title: JSON.parse(body).data.title,
@@ -92,7 +92,7 @@ router.post('/getResoult', async function(req, res) {
 				} catch (error) {}
 				for (let i in JSON.parse(body).data.pics) {
 					try {
-						await modules.Imgs.create1({
+						await modules.Imgs.create({
 							openId: req.body.openId,
 							img: JSON.parse(body).data.pics[i]
 						})
@@ -152,7 +152,8 @@ router.get('/getImgs', async function(req, res) {
 				status: 1
 			},
 			limit: pageSize,
-			offset: offset
+			offset: offset,
+			order: [["createdAt", "desc"]], // 以createdAt字段倒叙
 		});
 		res.json({
 			status: "SUCCESS",
@@ -165,6 +166,33 @@ router.get('/getImgs', async function(req, res) {
 	}
 })
 
+
+router.get('/history', async function(req, res) {
+	// 导入模型文件（根据自己项目中的情况修改）
+	try {
+		let userId  = req.query.userId
+		let page  = req.query.page
+		let pageSize = req.query.pageSize - 0
+		let offset = (page - 1) * pageSize
+		const result = await modules.Search.findAndCountAll({
+			where: {
+				status: 1,
+				userId: userId
+			},
+			limit: pageSize,
+			offset: offset,
+			order: [["createdAt", "desc"]], // 以createdAt字段倒叙
+		});
+		res.json({
+			status: "SUCCESS",
+			code: '200',
+			data: result.rows,
+			count: result.count
+		})
+	} catch (error) {
+		console.error("发生错误：", error);
+	}
+})
 
 
 

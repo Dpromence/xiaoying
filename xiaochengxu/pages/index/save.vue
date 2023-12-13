@@ -8,7 +8,7 @@
 		<!-- 图片 -->
 		<view class="imgBox" v-if="type==2 && res">
 			<view class="img" v-for="(item,index) in res.imgs" :key="index">
-				<image :src="item.imgUrl" show-menu-by-longpress='true' @tap="previewImage(index)" mode="widthFix"
+				<image :src="item.imgUrl" show-menu-by-longpress='true' @tap="previewImage(index)" mode="aspectFill"
 					alt=""></image>
 				<!-- <view class="save" @tap="saveSingle(item.imgUrl)">
 					保存
@@ -422,7 +422,7 @@
 					}
 				}
 
-				img {
+				image {
 					width: 100%;
 				}
 

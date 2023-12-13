@@ -101,7 +101,7 @@ var components
 try {
   components = {
     navBar: function () {
-      return Promise.all(/*! import() | components/navBar/navBar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/navBar/navBar")]).then(__webpack_require__.bind(null, /*! @/components/navBar/navBar.vue */ 87))
+      return Promise.all(/*! import() | components/navBar/navBar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/navBar/navBar")]).then(__webpack_require__.bind(null, /*! @/components/navBar/navBar.vue */ 95))
     },
   }
 } catch (e) {

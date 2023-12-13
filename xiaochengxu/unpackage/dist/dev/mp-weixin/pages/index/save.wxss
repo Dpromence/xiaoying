@@ -103,7 +103,7 @@
   width: 40rpx;
   height: 40rpx;
 }
-.content .imgBox .img ._img.data-v-93d00e5a {
+.content .imgBox .img image.data-v-93d00e5a {
   width: 100%;
 }
 .content .imgBox .img .save.data-v-93d00e5a {

@@ -10,8 +10,8 @@
 const GET = 'GET';
 const POST = 'POST';
 // const baseUrl = 'https://eeapi.cn'; // 正式
-const baseUrl = 'http://127.0.0.1:3000'; // 正式
-// const baseUrl = 'https://www.9877nba.cc'; // 正式
+// const baseUrl = 'http://127.0.0.1:3000'; // 正式
+const baseUrl = 'https://www.9877nba.cc'; // 正式
 // const baseUrl = 'https://gongju.yyymvp.com'; // 正式
 
 
@@ -45,6 +45,8 @@ const Api = {
 	login: (data) => request(GET, '/users/addUser', data), //登录
 	getCount: (data) => request(GET, '/users/getCount', data), //获取今日调用量
 	getImgs: (data) => request(GET, '/users/getImgs', data), //获取图片列表
+	history: (data) => request(GET, '/users/history', data), //获取图片列表历史
+	
 };
 export default {
 	Api

@@ -1,9 +1,8 @@
 <template>
 	<view class="content">
 		<view class="navBar" :style="{height: navBarHeight+'px'}"></view>
-		<navBar title="更多壁纸" :leftIcon="false" :dark="false"></navBar>
+		<navBar title="历史记录" :leftIcon="false" :dark="false"></navBar>
 		<view class="">
-			
 			<scroll-view class="scroll-view_H" :scroll-y="true" :style="{height: 'calc(100vh - '+(sucreenHeight)+'rpx)'}"
 			   @refresherrefresh="refresherrefresh" :refresher-triggered="refreshStatus" lower-threshold="50"
 				refresher-default-style="none" :refresher-enabled="true"
@@ -18,12 +17,20 @@
 						</view>
 					</view>
 				</view>
-				<view class="noMore" v-if="!notNull">
+				<view v-if="notNull" style="overflow: hidden;">
+					<view class="" style="text-align: center;font-size: 24rpx;color: #666;text-align: center;margin-top: 80rpx;">
+						您还没有历史记录呦
+					</view>
+					<view class="" @tap="toPage" style="width: 160rpx;height: 60rpx;background: #0080DF;font-size: 24rpx;border-radius: 40rpx;margin: 30rpx auto 0;text-align: center;color: #fff;line-height: 60rpx;">
+						去解析
+					</view>
+				</view>
+				<view class="noMore" >
 					<span>{{noMore?'我也是有底线的呦~':''}}</span>
 				</view>
 			</scroll-view>
 		</view>
-		<bottomMenu :menuActive="2"></bottomMenu>
+		<bottomMenu :menuActive="3"></bottomMenu>
 	</view>
 </template>
 
@@ -65,9 +72,10 @@
 				uni.showLoading({
 					title: 'loading...'
 				})
-				this.$http.getImgs({
+				this.$http.history({
 					page: this.page,
-					pageSize: this.pageSize
+					pageSize: this.pageSize,
+					userId: uni.getStorageSync('userInfo').userId
 				}).then(res => {
 					console.log(res)
 					uni.hideLoading()
@@ -76,7 +84,7 @@
 						for (let i in res.data) {
 							var randomNumber = Math.floor(Math.random() * (JSON.parse(res.data[i].imgs).length - 1) + 1);
 							res.data[i].imgs = JSON.parse(res.data[i].imgs)
-							res.data[i].url = res.data[i].imgs[randomNumber - 1]
+							res.data[i].url = res.data[i].imgs[1 - 1]
 						}
 						this.list = [...this.list, ...res.data]
 						if (this.pageSize > res.data.length) {
@@ -98,6 +106,11 @@
 				uni.setStorageSync('data', data)
 				uni.navigateTo({
 					url: '/pages/index/save'
+				})
+			},
+			toPage() {
+				uni.navigateTo({
+					url: "/pages/index/index"
 				})
 			},
 			// 触发下拉刷新事件

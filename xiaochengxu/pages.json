@@ -38,6 +38,13 @@
 				"navigationStyle": "custom",
 				"navigationBarTitleText": "更多壁纸"
 			}
+		},
+		{
+			"path": "pages/index/history",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "历史记录"
+			}
 		}
 	],
 	// "tabBar": {
