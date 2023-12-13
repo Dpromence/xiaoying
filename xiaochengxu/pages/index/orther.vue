@@ -15,7 +15,7 @@
 							<image :src="item.url" mode="aspectFill"></image>
 						</view>
 						<view class="title">
-							{{item.title}} 
+							{{item.title}}
 						</view>
 					</view>
 				</view>

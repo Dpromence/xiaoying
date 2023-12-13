@@ -1,8 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "历史记录",
-  "usingComponents": {
-    "nav-bar": "/components/navBar/navBar",
-    "bottom-menu": "/components/bottomMenu/bottomMenu"
-  }
-}

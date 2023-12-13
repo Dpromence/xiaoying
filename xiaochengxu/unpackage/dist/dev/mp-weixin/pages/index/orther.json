@@ -1,8 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "更多壁纸",
-  "usingComponents": {
-    "nav-bar": "/components/navBar/navBar",
-    "bottom-menu": "/components/bottomMenu/bottomMenu"
-  }
-}

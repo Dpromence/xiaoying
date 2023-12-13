@@ -1,7 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "头像保存",
-  "usingComponents": {
-    "nav-bar": "/components/navBar/navBar"
-  }
-}
