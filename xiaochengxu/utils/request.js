@@ -10,8 +10,8 @@
 const GET = 'GET';
 const POST = 'POST';
 // const baseUrl = 'https://eeapi.cn'; // 正式
-// const baseUrl = 'http://127.0.0.1:3000'; // 正式
-const baseUrl = 'https://www.9877nba.cc'; // 正式
+const baseUrl = 'http://127.0.0.1:3000'; // 正式
+// const baseUrl = 'https://www.9877nba.cc'; // 正式
 // const baseUrl = 'https://gongju.yyymvp.com'; // 正式
 
 

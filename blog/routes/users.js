@@ -8,6 +8,7 @@ const {
 var express = require('express');
 var router = express.Router();
 var modules = require("../models");
+var https = require("https");
 
 /* GET users listing. */
 router.get('/addUser', async function(req, res, next) {
@@ -92,10 +93,37 @@ router.post('/getResoult', async function(req, res) {
 				} catch (error) {}
 				for (let i in JSON.parse(body).data.pics) {
 					try {
-						await modules.Imgs.create({
-							openId: req.body.openId,
-							img: JSON.parse(body).data.pics[i]
-						})
+						const fs = require('fs')
+						const path = require('path')
+						const imageUrl = JSON.parse(body).data.pics[i]
+						const imageFormat = path.extname(imageUrl).toLowerCase().split('?')[0];
+						
+						
+						// let imgs = 'https://ci.xiaohongshu.com/1040g2sg30rrr9kjm2o005ndbqreg8oqgpea53s8?imageView2/2/w/0/format/jpg/v3'
+						// let imgs = 'https://p26-sign.douyinpic.com/tos-cn-i-0813c001/og7ArANh5gs3y4iNlICmetAGAaEBfxAAzMB38m~tplv-dy-lqen-new:930:1653:q80.jpeg?x-expires=1705226400&x-signature=dU8%2F4jCqBe%2Fajjxp7iC4tzgRyU8%3D&from=3213915784&s=PackSourceEnum_DOUYIN_REFLOW&se=false&sc=image&biz_tag=aweme_images&l=20231215182126DC64E65F5C4842068754'
+						https.get(imageUrl, res => {
+						   console.log(res.headers)
+						   console.log(res.headers['content-type'].split('/')[1])
+						   const filename = "image_" + Date.now() + '.' + res.headers['content-type'].split('/')[1]
+						   const filePath = path.join(__dirname, 'uploads/imgs/', filename)
+						   request(imageUrl).on('error', async function(err) {
+						   	console.log("Error downloading the image: " + err);
+						   }).pipe(fs.createWriteStream(filePath)).on('finish',async function() {
+						   	await modules.Imgs.create({
+						   		openId: req.body.openId,
+						   		img: JSON.parse(body).data.pics[i],
+						   		imgName: filename
+						   	})
+						   	console.log("Image downloaded and saved successfully.");
+						   });
+						}).on('error', err => {
+						    console.log('Error: ', err.message);
+						});
+						
+						
+						
+					// 	console.log(filePath)
+					
 					} catch (error) {
 
 					}
@@ -144,7 +172,7 @@ router.get('/getCount', async function(req, res) {
 router.get('/getImgs', async function(req, res) {
 	// 导入模型文件（根据自己项目中的情况修改）
 	try {
-		let page  = req.query.page
+		let page = req.query.page
 		let pageSize = req.query.pageSize - 0
 		let offset = (page - 1) * pageSize
 		const result = await modules.Search.findAndCountAll({
@@ -153,7 +181,9 @@ router.get('/getImgs', async function(req, res) {
 			},
 			limit: pageSize,
 			offset: offset,
-			order: [["createdAt", "desc"]], // 以createdAt字段倒叙
+			order: [
+				["createdAt", "desc"]
+			], // 以createdAt字段倒叙
 		});
 		res.json({
 			status: "SUCCESS",
@@ -170,8 +200,8 @@ router.get('/getImgs', async function(req, res) {
 router.get('/history', async function(req, res) {
 	// 导入模型文件（根据自己项目中的情况修改）
 	try {
-		let userId  = req.query.userId
-		let page  = req.query.page
+		let userId = req.query.userId
+		let page = req.query.page
 		let pageSize = req.query.pageSize - 0
 		let offset = (page - 1) * pageSize
 		const result = await modules.Search.findAndCountAll({
@@ -181,7 +211,9 @@ router.get('/history', async function(req, res) {
 			},
 			limit: pageSize,
 			offset: offset,
-			order: [["createdAt", "desc"]], // 以createdAt字段倒叙
+			order: [
+				["createdAt", "desc"]
+			], // 以createdAt字段倒叙
 		});
 		res.json({
 			status: "SUCCESS",

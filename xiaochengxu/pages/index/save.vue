@@ -27,7 +27,7 @@
 		<!-- 视频 -->
 		<view class="videoBox" v-if="type==1 ">
 			<view class="video">
-				<video v-if="res.downurl" :poster="res.photo" :src="res.downurl"></video>
+				<video id="myVideo" v-if="res.downurl" :poster="res.photo" :src="res.downurl" enable-danmu danmu-btn controls></video>
 			</view>
 			<!-- #ifdef H5 -->
 			<view class="button">
@@ -35,9 +35,9 @@
 			</view>
 			<!-- #endif -->
 			<!-- #ifdef MP -->
-			<!-- 	<view class="button" @tap="saveVideo(res.data.downurl)">
+			<view class="button" @tap="saveVideo(res.downurl)">
 				保存视频
-			</view> -->
+			</view>
 			<!-- #endif -->
 
 		</view>
@@ -68,7 +68,7 @@
 			if (data.type == 2) {
 				this.type = 2
 			} else {
-				this.type = 2
+				this.type = 1
 			}
 			data.imgs = []
 			console.log(data.pics)
@@ -150,9 +150,20 @@
 				})
 			},
 			saveVideo(url) {
+				const videoContext = uni.createVideoContext('myVideo'); // 'videoId'为视频组件的id属性值
 				if (!url) {
 					return
 				}
+				videoContext.saveToPhotosAlbum({
+				    filePath: '', // 这里传入空字符串表示默认选项
+				    success() {
+				      console.log("视频已成功保存到相册！");
+				    },
+				    fail() {
+				      console.error("保存视频失败！");
+				    }
+				  });
+				return
 				this.savePoster().then(res => {
 					if (res) {
 						this.saveImg(url).then(res => {
