@@ -46,6 +46,8 @@ const Api = {
 	getCount: (data) => request(GET, '/users/getCount', data), //获取今日调用量
 	getImgs: (data) => request(GET, '/users/getImgs', data), //获取图片列表
 	history: (data) => request(GET, '/users/history', data), //获取图片列表历史
+	write: (data) => request(POST, '/users/write', data), // 写文章
+	getWrite: (data) => request(POST, '/users/getWrite', data), // 获取文章
 	
 };
 export default {
