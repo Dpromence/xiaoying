@@ -10,6 +10,7 @@ var router = express.Router();
 var modules = require("../models");
 var https = require("https");
 
+
 /* GET users listing. */
 router.get('/addUser', async function(req, res, next) {
 	console.log(req.query)
@@ -83,51 +84,17 @@ router.post('/getResoult', async function(req, res) {
 				})
 			} else {
 				try {
-					await modules.Search.create({
-						userId: req.body.userId,
-						seachValue: req.body.url,
-						title: JSON.parse(body).data.title,
-						imgs: JSON.stringify(JSON.parse(body).data.pics),
-						status: 1
-					})
-				} catch (error) {}
-				for (let i in JSON.parse(body).data.pics) {
-					try {
-						const fs = require('fs')
-						const path = require('path')
-						const imageUrl = JSON.parse(body).data.pics[i]
-						const imageFormat = path.extname(imageUrl).toLowerCase().split('?')[0];
-						
-						
-						// let imgs = 'https://ci.xiaohongshu.com/1040g2sg30rrr9kjm2o005ndbqreg8oqgpea53s8?imageView2/2/w/0/format/jpg/v3'
-						// let imgs = 'https://p26-sign.douyinpic.com/tos-cn-i-0813c001/og7ArANh5gs3y4iNlICmetAGAaEBfxAAzMB38m~tplv-dy-lqen-new:930:1653:q80.jpeg?x-expires=1705226400&x-signature=dU8%2F4jCqBe%2Fajjxp7iC4tzgRyU8%3D&from=3213915784&s=PackSourceEnum_DOUYIN_REFLOW&se=false&sc=image&biz_tag=aweme_images&l=20231215182126DC64E65F5C4842068754'
-						https.get(imageUrl, res => {
-						   console.log(res.headers)
-						   console.log(res.headers['content-type'].split('/')[1])
-						   const filename = "image_" + Date.now() + '.' + res.headers['content-type'].split('/')[1]
-						   const filePath = path.join(__dirname, 'uploads/imgs/', filename)
-						   request(imageUrl).on('error', async function(err) {
-						   	console.log("Error downloading the image: " + err);
-						   }).pipe(fs.createWriteStream(filePath)).on('finish',async function() {
-						   	await modules.Imgs.create({
-						   		openId: req.body.openId,
-						   		img: JSON.parse(body).data.pics[i],
-						   		imgName: filename
-						   	})
-						   	console.log("Image downloaded and saved successfully.");
-						   });
-						}).on('error', err => {
-						    console.log('Error: ', err.message);
-						});
-						
-						
-						
-					// 	console.log(filePath)
-					
-					} catch (error) {
-
+					if (JSON.parse(body).data.type == 2) {
+						await modules.Search.create({
+							userId: req.body.userId,
+							seachValue: req.body.url,
+							title: JSON.parse(body).data.title,
+							imgs: JSON.stringify(JSON.parse(body).data.pics),
+							status: 1
+						})
 					}
-				}
+				} catch (error) {}
+				
 			}
 			res.json(JSON.parse(body))
 		} else {
@@ -164,6 +131,12 @@ router.get('/getCount', async function(req, res) {
 		})
 		console.log(`今天共有 ${count} 条数据。`);
 	} catch (error) {
+		res.json({
+			status: "fail",
+			code: '100',
+			data: ''
+		})
+		
 		console.error("发生错误：", error);
 	}
 })
@@ -227,5 +200,93 @@ router.get('/history', async function(req, res) {
 })
 
 
+const multer = require('multer')
+//磁盘存储引擎，可以控制文件的存储，省略的话这些文件会保存在内存中，不会写入磁盘
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        //控制文件的存储路径
+        cb(null, 'public/images/')
+    },
+    filename: function (req, file, cb) {
+        //定义上传文件存储时的文件名
+        cb(null, "image_" + Date.now() +'_' + file.originalname)
+    }
+})
+const upload = multer({ storage: storage })
+
+router.post('/upload', upload.single('imageFile'), async function(req, res) {
+	// 导入模型文件（根据自己项目中的情况修改
+    const imgUrl = `http://127.0.0.1:3000/images/${req.file.filename}`
+	try {
+		await modules.Imgs.create({
+			openId: req.body.openId,
+			img: imgUrl
+		})
+		res.json({
+			status: "SUCCESS",
+			code: '200',
+			data: {
+				url: imgUrl
+			}
+		})
+	} catch (error) {
+		res.json({
+			status: "fail",
+			code: '100',
+			data: ''
+		})
+	}
+	
+})
+
+router.post('/write', async function(req, res) {
+	// 导入模型文件（根据自己项目中的情况修改
+	console.log(req.body.userId)
+	try {
+		await modules.Search.create({
+			userId: req.body.userId,
+			seachValue: '',
+			title: req.body.title,
+			imgs: req.body.detailsImages,
+			status: 1
+		})
+		res.json({
+			status: "SUCCESS",
+			code: '200',
+			data: ''
+		})
+	} catch (error) {
+		res.json({
+			status: "fail",
+			code: '100',
+			data: ''
+		})
+	}
+	
+})
+router.post('/getWrite', async function(req, res) {
+	// 导入模型文件（根据自己项目中的情况修改
+	console.log(req.body.no)
+	try {
+		const result = await modules.Search.findAll({
+			where: {
+				status: 1,
+				id: req.body.no
+			}
+		});
+		res.json({
+			status: "SUCCESS",
+			code: '200',
+			data: result
+		})
+	} catch (error) {
+		res.json({
+			status: "fail",
+			code: '100',
+			data: ''
+		})
+	}
+	
+})
 
 module.exports = router;
