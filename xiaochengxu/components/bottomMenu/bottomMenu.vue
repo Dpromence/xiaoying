@@ -16,11 +16,11 @@
 				<img v-else src="@/static/tabBar/manage.png" alt="">
 				<span>历史记录</span>
 			</view>
-			<view class="menu" :class="menuActive == 4?'active':''" @click="menuTap(4)">
+			<!-- <view class="menu" :class="menuActive == 4?'active':''" @click="menuTap(4)">
 				<img v-if="menuActive == 4" src="@/static/tabBar/home1.png" alt="">
 				<img v-else src="@/static/tabBar/home.png" alt="">
 				<span>我的</span>
-			</view>
+			</view> -->
 			<!-- <view class="menu" :class="menuActive == 2?'active':''" @click="menuTap(2)">
 				<img v-if="menuActive == 2" src="@/static/tabBar/deal1.png" alt="">
 				<img v-else src="@/static/tabBar/deal.png" alt="">

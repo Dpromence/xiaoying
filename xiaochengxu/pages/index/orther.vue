@@ -3,15 +3,15 @@
 		<view class="navBar" :style="{height: navBarHeight+'px'}"></view>
 		<navBar title="更多壁纸" :leftIcon="false" :dark="false"></navBar>
 		<view class="">
-			<view class="inputBox">
+		<!-- 	<view class="inputBox">
 				<view class="input">
 					<input type="number" v-model="no" placeholder="请输入要查询的期数">
 				</view>
 				<view class="button" @tap="getWrite()">
 					确认
 				</view>
-			</view>
-			<scroll-view class="scroll-view_H" :scroll-y="true" :style="{height: 'calc(100vh - '+(sucreenHeight + 100)+'rpx)'}"
+			</view> -->
+			<scroll-view class="scroll-view_H" :scroll-y="true" :style="{height: 'calc(100vh - '+(sucreenHeight)+'rpx)'}"
 			   @refresherrefresh="refresherrefresh" :refresher-triggered="refreshStatus" lower-threshold="50"
 				refresher-default-style="none" :refresher-enabled="true"
 				@scrolltolower="lower">

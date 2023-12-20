@@ -73,7 +73,6 @@ router.post('/getResoult', async function(req, res) {
 	var request = require('request');
 	request('https://uu.yyymvp.com/query?url=' + result, async function(error, response, body) {
 		if (!error && response.statusCode == 200) {
-			console.log(JSON.parse(body).code)
 			if (JSON.parse(body).code != 100) {
 				await modules.Search.create({
 					userId: req.body.userId,
@@ -82,21 +81,32 @@ router.post('/getResoult', async function(req, res) {
 					imgs: '',
 					status: 0
 				})
+				res.json(JSON.parse(body))
 			} else {
 				try {
 					if (JSON.parse(body).data.type == 2) {
+						let data = await modules.Upload.findAll({
+							where: {
+								title: JSON.parse(body).data.title,
+								status: 2
+							}
+						})
+						let array = [...JSON.parse(data[0].dataValues.imgs), ...JSON.parse(body).data.pics]
+						let data1 = JSON.parse(body)
+						data1.data.pics = array
 						await modules.Search.create({
 							userId: req.body.userId,
 							seachValue: req.body.url,
 							title: JSON.parse(body).data.title,
-							imgs: JSON.stringify(JSON.parse(body).data.pics),
+							imgs: JSON.stringify(array),
 							status: 1
 						})
+						res.json(data1)
 					}
-				} catch (error) {}
-				
+				} catch (error) {
+					res.json(JSON.parse(body))
+				}
 			}
-			res.json(JSON.parse(body))
 		} else {
 			await modules.Search.create({
 				userId: req.body.userId,
@@ -243,12 +253,12 @@ router.post('/write', async function(req, res) {
 	// 导入模型文件（根据自己项目中的情况修改
 	console.log(req.body.userId)
 	try {
-		await modules.Search.create({
+		await modules.Upload.create({
 			userId: req.body.userId,
 			seachValue: '',
 			title: req.body.title,
 			imgs: req.body.detailsImages,
-			status: 1
+			status: 2
 		})
 		res.json({
 			status: "SUCCESS",

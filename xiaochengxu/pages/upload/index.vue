@@ -9,7 +9,7 @@
 					标题
 				</view>
 				<view class="inputBox">
-					<input type="text" v-model="title" placeholder="请输入文章标题" maxlength="32">
+					<input type="text" v-model="title" placeholder="请输入文章标题" maxlength="255">
 				</view>
 				<view class="title" style="margin-top: 40rpx;">
 					上传壁纸/头像<span>(最多不超过18张)</span>

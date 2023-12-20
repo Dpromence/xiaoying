@@ -90,7 +90,7 @@
 									title: '粘贴成功',
 									icon: 'none'
 								})
-								// that.value = res.data
+								that.value = res.data
 							}
 						},
 						fail(res) {
@@ -119,7 +119,7 @@
 							title: '粘贴成功',
 							icon: 'none'
 						})
-						// that.value = res.data
+						that.value = res.data
 						that.submit()
 					},
 					fail(res) {
@@ -166,7 +166,6 @@
 						}
 					})
 				}
-
 			}
 		}
 	}
